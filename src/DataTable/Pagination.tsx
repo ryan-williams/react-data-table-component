@@ -6,7 +6,7 @@ import useWindowSize from '../hooks/useWindowSize';
 import useRTL from '../hooks/useRTL';
 import { media, SMALL } from './media';
 import { Direction } from './constants';
-import { PaginationOptions } from './types';
+import { PaginationChangePage, PaginationChangeRowsPerPage, PaginationOptions } from './types';
 import { defaultProps } from './defaultProps';
 
 const defaultComponentOptions = {
@@ -75,8 +75,8 @@ interface PaginationProps {
 	paginationIconNext?: React.ReactNode;
 	paginationIconPrevious?: React.ReactNode;
 	paginationComponentOptions?: PaginationOptions;
-	onChangePage: (page: number) => void;
-	onChangeRowsPerPage: (numRows: number, currentPage: number) => void;
+	onChangePage: PaginationChangePage;
+	onChangeRowsPerPage: PaginationChangeRowsPerPage;
 }
 
 function Pagination({
@@ -108,11 +108,11 @@ function Pagination({
 			? `${firstIndex}-${rowCount} ${options.rangeSeparatorText} ${rowCount}`
 			: `${firstIndex}-${lastIndex} ${options.rangeSeparatorText} ${rowCount}`;
 
-	const handlePrevious = React.useCallback(() => onChangePage(currentPage - 1), [currentPage, onChangePage]);
-	const handleNext = React.useCallback(() => onChangePage(currentPage + 1), [currentPage, onChangePage]);
-	const handleFirst = React.useCallback(() => onChangePage(1), [onChangePage]);
+	const handlePrevious = React.useCallback(() => onChangePage(currentPage - 1, rowCount), [currentPage, onChangePage]);
+	const handleNext = React.useCallback(() => onChangePage(currentPage + 1, rowCount), [currentPage, onChangePage]);
+	const handleFirst = React.useCallback(() => onChangePage(1, rowCount), [onChangePage]);
 	const handleLast = React.useCallback(
-		() => onChangePage(getNumberOfPages(rowCount, rowsPerPage)),
+		() => onChangePage(getNumberOfPages(rowCount, rowsPerPage), rowCount),
 		[onChangePage, rowCount, rowsPerPage],
 	);
 	const handleRowsPerPage = React.useCallback(
