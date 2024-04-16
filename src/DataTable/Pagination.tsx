@@ -8,7 +8,7 @@ import { media, SMALL } from './media';
 import { PaginationComponentProps } from './types';
 import { defaultProps } from './defaultProps';
 
-const defaultComponentOptions = {
+export const defaultComponentOptions = {
 	rowsPerPageText: 'Rows per page:',
 	rangeSeparatorText: 'of',
 	noRowsPerPage: false,
@@ -16,7 +16,7 @@ const defaultComponentOptions = {
 	selectAllRowsItemText: 'All',
 };
 
-const PaginationWrapper = styled.nav`
+export const PaginationWrapper = styled.nav`
 	display: flex;
 	flex: 1 1 auto;
 	justify-content: flex-end;
@@ -28,7 +28,7 @@ const PaginationWrapper = styled.nav`
 	${({ theme }) => theme.pagination.style};
 `;
 
-const Button = styled.button<{
+export const Button = styled.button<{
 	$isRTL: boolean;
 }>`
 	position: relative;
@@ -39,7 +39,7 @@ const Button = styled.button<{
 	${({ $isRTL }) => $isRTL && 'transform: scale(-1, -1)'};
 `;
 
-const PageList = styled.div`
+export const PageList = styled.div`
 	display: flex;
 	align-items: center;
 	border-radius: 4px;
@@ -50,20 +50,20 @@ const PageList = styled.div`
   `};
 `;
 
-const Span = styled.span`
+export const Span = styled.span`
 	flex-shrink: 1;
 	user-select: none;
 `;
 
-const Range = styled(Span)`
+export const Range = styled(Span)`
 	margin: 0 24px;
 `;
 
-const RowLabel = styled(Span)`
+export const RowLabel = styled(Span)`
 	margin: 0 4px;
 `;
 
-interface PaginationProps extends PaginationComponentProps {}
+export interface PaginationProps extends PaginationComponentProps {}
 
 function Pagination({
 	rowsPerPage,
