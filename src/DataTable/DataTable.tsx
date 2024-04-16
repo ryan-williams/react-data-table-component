@@ -30,6 +30,7 @@ import {
 	TableProps,
 	TableState,
 	SortOrder,
+	PaginationComponent,
 } from './types';
 import useColumns from '../hooks/useColumns';
 
@@ -158,7 +159,7 @@ function DataTable<T>(props: TableProps<T>): JSX.Element {
 	const { persistSelectedOnSort = false, persistSelectedOnPageChange = false } = paginationServerOptions;
 	const mergeSelections = !!(paginationServer && (persistSelectedOnPageChange || persistSelectedOnSort));
 	const enabledPagination = pagination && !progressPending && data.length > 0;
-	const Pagination = paginationComponent || NativePagination;
+	const Pagination: PaginationComponent = paginationComponent || NativePagination;
 
 	const currentTheme = React.useMemo(() => createStyles(customStyles, theme), [customStyles, theme]);
 	const wrapperProps = React.useMemo(() => ({ ...(direction !== 'auto' && { dir: direction }) }), [direction]);

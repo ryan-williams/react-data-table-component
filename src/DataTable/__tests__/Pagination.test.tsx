@@ -36,7 +36,7 @@ describe('when clicking the First Page button', () => {
 		);
 
 		fireEvent.click(container.querySelector('button#pagination-first-page') as HTMLButtonElement);
-		expect(onChangePageMock).toBeCalledWith(1);
+		expect(onChangePageMock).toBeCalledWith(1, 40);
 	});
 
 	test('should NOT call onChangePage with correct args when currentPage is === 1', () => {
@@ -70,7 +70,7 @@ describe('when clicking the Last Page button', () => {
 		);
 
 		fireEvent.click(container.querySelector('button#pagination-last-page') as HTMLButtonElement);
-		expect(onChangePageMock).toBeCalledWith(4);
+		expect(onChangePageMock).toBeCalledWith(4, 40);
 	});
 
 	test('should NOT call onChangePage with correct args when currentPage is the last page', () => {
@@ -104,7 +104,7 @@ describe('when clicking the Next Page button', () => {
 		);
 
 		fireEvent.click(container.querySelector('button#pagination-next-page') as HTMLButtonElement);
-		expect(onChangePageMock).toBeCalledWith(2);
+		expect(onChangePageMock).toBeCalledWith(2, 40);
 	});
 
 	test('should NOT call onChangePage with correct args when currentPage is the last page', () => {
@@ -138,7 +138,7 @@ describe('when clicking the Previous Page button', () => {
 		);
 
 		fireEvent.click(container.querySelector('button#pagination-previous-page') as HTMLButtonElement);
-		expect(onChangePageMock).toBeCalledWith(1);
+		expect(onChangePageMock).toBeCalledWith(1, 40);
 	});
 
 	test('should NOT call onChangePage with correct args when currentPage is 1', () => {

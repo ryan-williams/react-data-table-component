@@ -1,5 +1,6 @@
 import { Alignment, Direction, Media } from './constants';
 import { CSSObject } from 'styled-components';
+import * as React from "react";
 
 export enum SortOrder {
 	ASC = 'asc',
@@ -23,6 +24,13 @@ export type PaginationComponentProps = {
 	rowsPerPage: number;
 	rowCount: number;
 	currentPage: number;
+	direction?: Direction;
+	paginationRowsPerPageOptions?: number[];
+	paginationIconLastPage?: React.ReactNode;
+	paginationIconFirstPage?: React.ReactNode;
+	paginationIconNext?: React.ReactNode;
+	paginationIconPrevious?: React.ReactNode;
+	paginationComponentOptions?: PaginationOptions;
 	onChangePage: PaginationChangePage;
 	onChangeRowsPerPage: PaginationChangeRowsPerPage;
 };

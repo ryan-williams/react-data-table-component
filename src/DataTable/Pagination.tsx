@@ -5,8 +5,7 @@ import { getNumberOfPages } from './util';
 import useWindowSize from '../hooks/useWindowSize';
 import useRTL from '../hooks/useRTL';
 import { media, SMALL } from './media';
-import { Direction } from './constants';
-import { PaginationChangePage, PaginationChangeRowsPerPage, PaginationOptions } from './types';
+import { PaginationComponentProps } from './types';
 import { defaultProps } from './defaultProps';
 
 const defaultComponentOptions = {
@@ -64,20 +63,7 @@ const RowLabel = styled(Span)`
 	margin: 0 4px;
 `;
 
-interface PaginationProps {
-	rowsPerPage: number;
-	rowCount: number;
-	currentPage: number;
-	direction?: Direction;
-	paginationRowsPerPageOptions?: number[];
-	paginationIconLastPage?: React.ReactNode;
-	paginationIconFirstPage?: React.ReactNode;
-	paginationIconNext?: React.ReactNode;
-	paginationIconPrevious?: React.ReactNode;
-	paginationComponentOptions?: PaginationOptions;
-	onChangePage: PaginationChangePage;
-	onChangeRowsPerPage: PaginationChangeRowsPerPage;
-}
+interface PaginationProps extends PaginationComponentProps {}
 
 function Pagination({
 	rowsPerPage,
